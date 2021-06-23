@@ -49,7 +49,7 @@ In this state, the driver is in full control of movement. Joystick input will be
 ### Path Following
 In this state, the motion is controlled by a trajectory. This trajectory is fed in as a parameter. It sets the speed of the drivetrain based on an internal timer. This state automatically ends when the timer reaches or exceeds the total time of the trajectory.
 ## Hardware
-* 6 FalconFX's for driving
+* 4 FalconFX's for driving
 
 # Shooter
 The shooter's job is to automatically track the goal and shoot balls when told to by the operator. It automatically tracks with the use of vision processing and gyro-based control. 
@@ -122,7 +122,7 @@ The feeder wheel stops spinning and the dejammer wheels spin outwards. This remo
 * 1 VictorSP for feeding balls
 * 1 VictorSP (connected to 2 bag motors) to dejam balls
 
-# Climber
+# Climber (Currently off the table due to complexity)
 The climber's job is to extend at the end of the match and allow the robot to pull itself up onto the shield generator.
 
 ## States
