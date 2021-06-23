@@ -20,7 +20,7 @@ Carl Lee Landskron
 ## Scenarios
 When understanding the importance of subsystems, it's good to consider two examples.
 
-*Managerial Note* Yes, these Scenarios are fun, but how helpful are they really? Are they too abstract? Probably. 
+*Managerial Note:* Yes, these Scenarios are fun, but how helpful are they really? Are they too abstract? Probably. 
 
 Scenario 1: Jeff.
 
