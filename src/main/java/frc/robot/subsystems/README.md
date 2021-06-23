@@ -54,7 +54,7 @@ In this state, the motion is controlled by a trajectory. This trajectory is fed 
 # Shooter
 The shooter's job is to automatically track the goal and shoot balls when told to by the operator. It automatically tracks with the use of vision processing and gyro-based control. 
 
-*Open Issue:* The shooter and hopper are very closely intertwined in function. We may need to consider combining into one subsystem. It might also be possible to push a "status" to smartdashboard and then pull it down to another subsystem, allowing it to "peek" at anothers status without causing issues.
+*Techincal Note:* The shooter and hopper are very closely intertwined in function. We considered combining into one subsystem. It was decided that they each had their own states and functions, so they should be keep seperate. In the case that a command group needs information about a subsystem to determine the state of another, a "status" value will be passed over network tables.
 
 
 
@@ -67,7 +67,7 @@ In this state, the turret uses the NavX Gyro to approximate the goal target. It 
 *Techinical Note:* Consider using occasional burst of limelight tracking to adjust the angle of hood. Might also make since not to move the hood (because that's you're like to shoot from the same position) or to go back to a default angle.
 
 ### Precision Shot
-In this state, the turret and the hood use the limelight vision tracking to move into position. If an adeqauite vision target cannot be found, default to joystick values. The flywheels spin up once into position (within a tolerance). The limelight camMode is set to 1 for short range shooting.
+In this state, the turret and the hood use the limelight vision tracking to move into position. If an adeqauite vision target cannot be found, default to joystick values until found. The flywheels spin up once into position (within a tolerance). The limelight camMode is set to 1 for short range shooting.
 
 *Techincal Note:* Rather than a 1, you could make a constant in the constances file and pull that.
 
