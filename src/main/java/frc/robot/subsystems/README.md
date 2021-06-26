@@ -20,6 +20,8 @@ Carl Lee Landskron
 ## Scenarios
 When understanding the importance of subsystems, it's good to consider two examples.
 
+*Managerial Note:* Yes, these Scenarios are fun, but how helpful are they really? Are they too abstract? Probably. 
+
 Scenario 1: Jeff.
 
 Jeff is creating a robot to fly to Jacksonville and back. This robot will have two sparkle adjusters, each moving in the same direction and power in order to prevent damage to the jetpack model. Thus, Jeff creates a subsystem to encapsolate the two sparkle adjuster objects in code. He then creates a method called *setSparkleAdjusters(double power)* that automatically sets the power to both sparkle adjusters to the same value. He then sets the sparkle adjuster objects to private so they never get set to different values.
@@ -47,12 +49,12 @@ In this state, the driver is in full control of movement. Joystick input will be
 ### Path Following
 In this state, the motion is controlled by a trajectory. This trajectory is fed in as a parameter. It sets the speed of the drivetrain based on an internal timer. This state automatically ends when the timer reaches or exceeds the total time of the trajectory.
 ## Hardware
-* 6 FalconFX's for driving
+* 4 FalconFX's for driving
 
 # Shooter
 The shooter's job is to automatically track the goal and shoot balls when told to by the operator. It automatically tracks with the use of vision processing and gyro-based control. 
 
-*Open Issue:* The shooter and hopper are very closely intertwined in function. We may need to consider combining into one subsystem. It might also be possible to push a "status" to smartdashboard and then pull it down to another subsystem, allowing it to "peek" at anothers status without causing issues.
+*Techincal Note:* The shooter and hopper are very closely intertwined in function. We considered combining into one subsystem. It was decided that they each had their own states and functions, so they should be keep seperate. In the case that a command group needs information about a subsystem to determine the state of another, a "status" value will be passed over network tables.
 
 
 
@@ -65,7 +67,7 @@ In this state, the turret uses the NavX Gyro to approximate the goal target. It 
 *Techinical Note:* Consider using occasional burst of limelight tracking to adjust the angle of hood. Might also make since not to move the hood (because that's you're like to shoot from the same position) or to go back to a default angle.
 
 ### Precision Shot
-In this state, the turret and the hood use the limelight vision tracking to move into position. If an adeqauite vision target cannot be found, default to joystick values. The flywheels spin up once into position (within a tolerance). The limelight camMode is set to 1 for short range shooting.
+In this state, the turret and the hood use the limelight vision tracking to move into position. If an adeqauite vision target cannot be found, default to joystick values until found. The flywheels spin up once into position (within a tolerance). The limelight camMode is set to 1 for short range shooting.
 
 *Techincal Note:* Rather than a 1, you could make a constant in the constances file and pull that.
 
@@ -120,7 +122,7 @@ The feeder wheel stops spinning and the dejammer wheels spin outwards. This remo
 * 1 VictorSP for feeding balls
 * 1 VictorSP (connected to 2 bag motors) to dejam balls
 
-# Climber
+# Climber (Currently off the table due to complexity)
 The climber's job is to extend at the end of the match and allow the robot to pull itself up onto the shield generator.
 
 ## States
