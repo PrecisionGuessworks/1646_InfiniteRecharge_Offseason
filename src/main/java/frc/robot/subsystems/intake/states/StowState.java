@@ -9,11 +9,11 @@ package frc.robot.subsystems.intake.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class IdleIntakeState extends CommandBase {
+public class StowState extends CommandBase {
   /**
    * Creates a new IdleIntakeState.
    */
-  public IdleIntakeState() {
+  public StowState() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

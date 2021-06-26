@@ -46,7 +46,7 @@ The drivetrain's job is to get the robot from point A to B, whether that be by d
 ## States
 ### Open Loop (default)
 In this state, the driver is in full control of movement. Joystick input will be fed directly in as power inputs to the motors (after being cubed in order to give more control to the drivers)
-### Path Following
+### Path Follower
 In this state, the motion is controlled by a trajectory. This trajectory is fed in as a parameter. It sets the speed of the drivetrain based on an internal timer. This state automatically ends when the timer reaches or exceeds the total time of the trajectory.
 ## Hardware
 * 4 FalconFX's for driving
@@ -59,7 +59,7 @@ The shooter's job is to automatically track the goal and shoot balls when told t
 
 
 ## States
-### Idle
+### Idle Shooter
 All motors stop rotating.
 ### Lazy Tracking (default)
 In this state, the turret uses the NavX Gyro to approximate the goal target. It uses the angle to point the turrent down field. This makes it so the turret is almost lined up once we are ready to shoot. All other motors stop spinning.
@@ -97,7 +97,7 @@ This state sets the flywheels to a very low power, so the balls can be gentle lo
 The intake's job is to collect balls from the ground.
 
 ## States
-### Idle (default)
+### Stow (default)
 In this state, the intake rollers stop spinning. It is stowed inside the robot for protection.
 ### Collecting
 The intake roller spin inward. It is extended outside the frame to collect balls.
@@ -111,7 +111,7 @@ The intake roller spin inward. It is extended outside the frame to collect balls
 The hopper's job is to store balls collected from the intake, then quickly push them into the shooter one by one.
 
 ## States
-### Idle (default)
+### Idle Hopper (default)
 In this state, the dejammer wheels and the feeder wheels stop spinning.
 ### Feed
 When entering the feed state, the dejammer wheels and the feeder wheels both spin inwards. This forces the balls into the shooter.
