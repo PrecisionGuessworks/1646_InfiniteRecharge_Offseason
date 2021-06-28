@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
   
-  private IntakeSubsystem instance;
+  private static IntakeSubsystem instance;
   private VictorSP rollerMotor; 
   
   /**
@@ -23,7 +23,7 @@ public class IntakeSubsystem extends SubsystemBase {
     rollerMotor = new VictorSP(RobotMap.INTAKEROLLERMOTORID);
   }
 
-  public IntakeSubsystem getInstance() {
+  public static IntakeSubsystem getInstance() {
     if (instance == null){
       instance = new IntakeSubsystem();
     }
