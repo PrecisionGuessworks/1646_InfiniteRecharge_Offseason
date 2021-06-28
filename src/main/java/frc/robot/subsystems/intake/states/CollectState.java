@@ -14,21 +14,21 @@ import frc.robot.Constants.IntakeConstants;
 
 public class CollectState extends CommandBase {
 
-  private IntakeSubsystem Intake = IntakeSubsystem.getInstance();
+  private IntakeSubsystem intake = IntakeSubsystem.getInstance();
 
   /**
    * Creates a new CollectState.
    */
   public CollectState() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Intake);
+    addRequirements(intake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Intake.setRollerPower(IntakeConstants.rollerIntakePower);
-    Intake.extend();
+    intake.setRollerPower(IntakeConstants.rollerIntakePower);
+    intake.extend();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
