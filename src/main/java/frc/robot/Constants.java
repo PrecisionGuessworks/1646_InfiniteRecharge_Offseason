@@ -16,4 +16,11 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public final class IntakeConstants{
+        public static final double rollerIntakePower = 0.8;
+    }
+
+
+
+
 }
