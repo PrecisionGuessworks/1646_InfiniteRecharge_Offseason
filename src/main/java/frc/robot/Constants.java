@@ -20,6 +20,9 @@ public final class Constants {
         public static final double rollerIntakePower = 0.8;
     }
 
+    public final class HopperConstants{
+        
+    }
 
 
 
