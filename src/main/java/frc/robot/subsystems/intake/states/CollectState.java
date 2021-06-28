@@ -8,18 +8,27 @@
 package frc.robot.subsystems.intake.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.intake.IntakeSubsystem;
+import frc.robot.Constants;
+import frc.robot.Constants.IntakeConstants;
 
 public class CollectState extends CommandBase {
+
+  private IntakeSubsystem Intake = IntakeSubsystem.getInstance();
+
   /**
    * Creates a new CollectState.
    */
   public CollectState() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(Intake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    Intake.setRollerPower(IntakeConstants.rollerIntakePower);
+    Intake.extend();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
