@@ -7,15 +7,42 @@
 
 package frc.robot.subsystems.hopper;
 
+import javax.swing.tree.RowMapper;
+
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
+import sun.security.jca.GetInstance;
 
 public class HopperSubsystem extends SubsystemBase {
+
+  private VictorSP feederWheelMotor;
+  private VictorSP dejamWheelMotor;
+
+  private HopperSubsystem instance;
   /**
    * Creates a new HopperSubsystem.
    */
-  public HopperSubsystem() {
-
+  private HopperSubsystem() {
+    feederWheelMotor = new VictorSP(RobotMap.HOPPER_FEEDER_WHEEL_MOTOR_ID);
+    dejamWheelMotor = new VictorSP(RobotMap.HOPPER_DEJAM_WHEEL_MOTOR_ID);
   }
+
+  public HopperSubsystem getInstance(){
+    if (instance == null){
+        instance = new HopperSubsystem();
+    }
+    return instance;
+  }
+
+  public void setFeederWheelPowerTo(double power){
+    feederWheelMotor.set(power);
+  }
+
+  public void setDejamWheelPowerTo(double power){
+    dejamWheelMotor.set(power);
+  }
+
 
   @Override
   public void periodic() {
