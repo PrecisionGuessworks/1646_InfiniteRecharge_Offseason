@@ -7,12 +7,10 @@
 
 package frc.robot.subsystems.hopper;
 
-import javax.swing.tree.RowMapper;
-
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-import sun.security.jca.GetInstance;
+
 
 public class HopperSubsystem extends SubsystemBase {
 
