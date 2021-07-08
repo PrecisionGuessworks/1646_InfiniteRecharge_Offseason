@@ -17,7 +17,7 @@ public class HopperSubsystem extends SubsystemBase {
   private VictorSP feederWheelMotor;
   private VictorSP dejamWheelMotor;
 
-  private HopperSubsystem instance;
+  private static HopperSubsystem instance;
   /**
    * Creates a new HopperSubsystem.
    */
@@ -26,7 +26,7 @@ public class HopperSubsystem extends SubsystemBase {
     dejamWheelMotor = new VictorSP(RobotMap.HOPPER_DEJAM_WHEEL_MOTOR_ID);
   }
 
-  public HopperSubsystem getInstance(){
+  public static HopperSubsystem getInstance(){
     if (instance == null){
         instance = new HopperSubsystem();
     }
