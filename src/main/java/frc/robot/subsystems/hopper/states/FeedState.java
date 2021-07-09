@@ -8,33 +8,20 @@
 package frc.robot.subsystems.hopper.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.HopperConstants;
+import frc.robot.subsystems.hopper.HopperSubsystem;
 
 public class FeedState extends CommandBase {
-  /**
-   * Creates a new FeedState.
-   */
+  
+  HopperSubsystem hopper = HopperSubsystem.getInstance();
+
   public FeedState() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(hopper);
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    hopper.setFeederWheelPowerTo(HopperConstants.feedInPower);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-  }
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
 }
