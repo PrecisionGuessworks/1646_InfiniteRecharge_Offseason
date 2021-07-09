@@ -22,6 +22,7 @@ public final class Constants {
 
     public final class HopperConstants{
         public static final double feedInPower = 0.8;
+        public static final double dejamPower = -0.4; //Must be opposite sign as feedInPower
     }
 
 

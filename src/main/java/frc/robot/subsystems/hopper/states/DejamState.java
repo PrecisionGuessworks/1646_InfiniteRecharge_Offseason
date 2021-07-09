@@ -8,33 +8,21 @@
 package frc.robot.subsystems.hopper.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.HopperConstants;
+import frc.robot.subsystems.hopper.HopperSubsystem;
 
 public class DejamState extends CommandBase {
-  /**
-   * Creates a new DejamState.
-   */
+  
+  HopperSubsystem hopper = HopperSubsystem.getInstance();
+
   public DejamState() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(hopper);
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    hopper.setFeederWheelPowerTo(0.0);
+    hopper.setDejamWheelPowerTo(HopperConstants.dejamPower);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-  }
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
 }
