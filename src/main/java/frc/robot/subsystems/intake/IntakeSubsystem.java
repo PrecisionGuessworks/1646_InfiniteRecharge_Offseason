@@ -20,7 +20,7 @@ public class IntakeSubsystem extends SubsystemBase {
    * Creates a new IntakeSubsystem.
    */
   private IntakeSubsystem() {
-    rollerMotor = new VictorSP(RobotMap.INTAKEROLLERMOTORID);
+    rollerMotor = new VictorSP(RobotMap.INTAKE_ROLLER_MOTOR_ID);
   }
 
   public static IntakeSubsystem getInstance() {
