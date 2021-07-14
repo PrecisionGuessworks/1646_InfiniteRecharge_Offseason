@@ -15,7 +15,7 @@ import frc.robot.RobotMap;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   
-  private DrivetrainSubsystem instance;
+  private static DrivetrainSubsystem instance;
   private TalonFX motorFL, motorFR, motorBL, motorBR;
 
   private DrivetrainSubsystem() {
@@ -30,7 +30,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     motorBR.setInverted(false);
   }
 
-  public DrivetrainSubsystem getInstance(){
+  public static DrivetrainSubsystem getInstance(){
     if (instance == null){
       instance = new DrivetrainSubsystem();
     }
