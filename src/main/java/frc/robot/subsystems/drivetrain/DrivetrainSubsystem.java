@@ -46,8 +46,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
 
-  public void arcadeDrive(double throtte, double rotation){
-    double leftPower = throtte - rotation;
+  public void arcadeDrive(double throttle, double rotation){
+    double leftPower = throttle - rotation;
     double rightPower = throttle + rotation;
     setPower(leftPower, rightPower);
   }
