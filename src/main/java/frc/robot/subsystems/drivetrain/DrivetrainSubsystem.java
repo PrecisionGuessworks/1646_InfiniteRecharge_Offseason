@@ -7,14 +7,20 @@
 
 package frc.robot.subsystems.drivetrain;
 
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 public class DrivetrainSubsystem extends SubsystemBase {
-  /**
-   * Creates a new DrivetrainSubsystem.
-   */
-  public DrivetrainSubsystem() {
+  
+  private TalonFX motorFL, motorFR, motorBL, motorBR;
 
+  public DrivetrainSubsystem() {
+    motorFL = new TalonFX(RobotMap.DRIVETRAIN_FL_MOTOR_ID);
+    motorFR = new TalonFX(RobotMap.DRIVETRAIN_FR_MOTOR_ID);
+    motorBL = new TalonFX(RobotMap.DRIVETRAIN_BL_MOTOR_ID);
+    motorBR = new TalonFX(RobotMap.DRIVETRAIN_BR_MOTOR_ID);
   }
 
   @Override
