@@ -7,24 +7,32 @@
 
 package frc.robot.subsystems.drivetrain.states;
 
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
 public class PathFollowerState extends CommandBase {
-  /**
-   * Creates a new PathFollowerState.
-   */
-  public PathFollowerState() {
-    // Use addRequirements() here to declare subsystem dependencies.
+  
+  DrivetrainSubsystem drive = DrivetrainSubsystem.getInstance();
+  Trajectory trajectory;
+  Timer path_timer;
+
+  public PathFollowerState(Trajectory trajectory) {
+    path_timer = new Timer();
+    this.trajectory = trajectory;
+    addRequirements(drive);
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    path_timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    
   }
 
   // Called once the command ends or is interrupted.
@@ -35,6 +43,6 @@ public class PathFollowerState extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return path_timer.hasElapsed(trajectory.getTotalTimeSeconds());
   }
 }
