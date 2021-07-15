@@ -9,6 +9,7 @@ package frc.robot.subsystems.drivetrain.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Controllers;
+import frc.robot.RobotMap;
 import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
 public class OpenLoopState extends CommandBase {
@@ -21,8 +22,12 @@ public class OpenLoopState extends CommandBase {
 
   @Override
   public void execute() {
-    double throttle = Controllers.getDriverController().getRawAxis(7);
-    double rotate = Controllers.getDriverController().getRawAxis(3);
-    drive.arcadeDrive(throttle, rotate);
+    double throttle = Controllers.getDriverController().getRawAxis(RobotMap.throttle_axis);
+    double rotate = Controllers.getDriverController().getRawAxis(RobotMap.rotate_axis);
+    boolean isQuickTurn = false;
+    if (Math.abs(throttle) < 0.1){
+      isQuickTurn = true;
+    }
+    drive.setDrivePowerWithCurvature(throttle, rotate, isQuickTurn);
   }
 }

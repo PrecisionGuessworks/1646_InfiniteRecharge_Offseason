@@ -29,5 +29,7 @@ public final class RobotMap {
 
     public static final int DRIVER_CONTROLLER_ID = 00;
     public static final int OPERATOR_CONTROLLER_ID = 01;
+    public static final int throttle_axis = 01;
+    public static final int rotate_axis = 02;
   
 }
