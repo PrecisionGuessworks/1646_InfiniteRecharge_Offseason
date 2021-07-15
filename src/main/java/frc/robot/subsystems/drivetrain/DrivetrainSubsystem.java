@@ -13,6 +13,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.RobotMap;
+import frc.robot.lib.TalonFXFactory;
+import frc.robot.Constants.DrivetrainConstants;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   
@@ -27,15 +29,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private double m_quickStopAccumulator;
 
   private DrivetrainSubsystem() {
-    motorFL = new TalonFX(RobotMap.DRIVETRAIN_FL_MOTOR_ID);
-    motorFR = new TalonFX(RobotMap.DRIVETRAIN_FR_MOTOR_ID);
-    motorBL = new TalonFX(RobotMap.DRIVETRAIN_BL_MOTOR_ID);
-    motorBR = new TalonFX(RobotMap.DRIVETRAIN_BR_MOTOR_ID);
-
-    motorFL.setInverted(true);
-    motorFR.setInverted(false);
-    motorBL.setInverted(true);
-    motorBR.setInverted(false);
+    motorFL = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FL_MOTOR_ID, DrivetrainConstants.LEFT_PID_P, DrivetrainConstants.LEFT_PID_I, DrivetrainConstants.LEFT_PID_D, DrivetrainConstants.LEFT_PID_F);
+    motorFR = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FR_MOTOR_ID, true, DrivetrainConstants.RIGHT_PID_P, DrivetrainConstants.RIGHT_PID_I, DrivetrainConstants.RIGHT_PID_D, DrivetrainConstants.RIGHT_PID_F);
+    motorBL = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_BL_MOTOR_ID, motorFL);
+    motorBR = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_BR_MOTOR_ID, motorFR);
   }
 
   public static DrivetrainSubsystem getInstance(){
@@ -47,10 +44,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   public void setPower(double leftPower, double rightPower){
     motorFL.set(ControlMode.PercentOutput, leftPower);
-    motorBL.set(ControlMode.PercentOutput, leftPower);
-
     motorFR.set(ControlMode.PercentOutput, rightPower);
-    motorBR.set(ControlMode.PercentOutput, rightPower);
+  }
+
+  public void setSpeed(double leftSpeed, double rightSpeed){
+    motorFL.set(ControlMode.Velocity, leftSpeed);
+    motorFR.set(ControlMode.Velocity, rightSpeed);
   }
 
 

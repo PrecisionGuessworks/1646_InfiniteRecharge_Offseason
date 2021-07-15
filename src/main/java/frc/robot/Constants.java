@@ -16,6 +16,17 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public final class DrivetrainConstants{
+        public static final double LEFT_PID_P = 0.1;
+        public static final double LEFT_PID_I = 0.0;
+        public static final double LEFT_PID_D = 0.0;
+        public static final double LEFT_PID_F = 0.5;
+
+        public static final double RIGHT_PID_P = 0.1;
+        public static final double RIGHT_PID_I = 0.0;
+        public static final double RIGHT_PID_D = 0.0;
+        public static final double RIGHT_PID_F = 0.5;
+    }
     public final class IntakeConstants{
         public static final double rollerIntakePower = 0.8;
     }
@@ -25,4 +36,5 @@ public final class Constants {
         public static final double feedInPower = 0.8;
         public static final double dejamPower = -0.4; //Must be opposite sign as feedInPower
     }
+
 }
