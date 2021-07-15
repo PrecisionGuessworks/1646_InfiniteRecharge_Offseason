@@ -8,33 +8,21 @@
 package frc.robot.subsystems.drivetrain.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Controllers;
+import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
 public class OpenLoopState extends CommandBase {
-  /**
-   * Creates a new OpenLoopState.
-   */
+
+  DrivetrainSubsystem drive = DrivetrainSubsystem.getInstance();
+
   public OpenLoopState() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(drive);
   }
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-  }
-
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  }
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
+    double throttle = Controllers.getDriverController().getRawAxis(7);
+    double rotate = Controllers.getDriverController().getRawAxis(3);
+    drive.arcadeDrive(throttle, rotate);
   }
 }
