@@ -11,12 +11,20 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.RobotMap;
 
 public class DrivetrainSubsystem extends SubsystemBase {
   
   private static DrivetrainSubsystem instance;
   private TalonFX motorFL, motorFR, motorBL, motorBR;
+
+  public static final double kDefaultQuickStopThreshold = 0.2;
+  public static final double kDefaultQuickStopAlpha = 0.1;
+
+  private double m_quickStopThreshold = kDefaultQuickStopThreshold;
+  private double m_quickStopAlpha = kDefaultQuickStopAlpha;
+  private double m_quickStopAccumulator;
 
   private DrivetrainSubsystem() {
     motorFL = new TalonFX(RobotMap.DRIVETRAIN_FL_MOTOR_ID);
@@ -50,6 +58,68 @@ public class DrivetrainSubsystem extends SubsystemBase {
     double leftPower = throttle - rotation;
     double rightPower = throttle + rotation;
     setPower(leftPower, rightPower);
+  }
+
+  public void setDrivePowerWithCurvature(double xSpeed, double zRotation, boolean isQuickTurn){
+    xSpeed = MathUtil.clamp(xSpeed, -1.0, 1.0);
+    //xSpeed = applyDeadband(xSpeed, m_deadband);
+
+    zRotation = MathUtil.clamp(zRotation, -1.0, 1.0);
+    //zRotation = applyDeadband(zRotation, m_deadband);
+
+    double angularPower;
+    boolean overPower;
+
+    if (isQuickTurn) {
+      if (Math.abs(xSpeed) < m_quickStopThreshold) {
+        m_quickStopAccumulator = (1 - m_quickStopAlpha) * m_quickStopAccumulator
+            + m_quickStopAlpha * MathUtil.clamp(zRotation, -1.0, 1.0) * 2;
+      }
+      overPower = true;
+      angularPower = zRotation;
+    } else {
+      overPower = false;
+      angularPower = Math.abs(xSpeed) * zRotation - m_quickStopAccumulator;
+
+      if (m_quickStopAccumulator > 1) {
+        m_quickStopAccumulator -= 1;
+      } else if (m_quickStopAccumulator < -1) {
+        m_quickStopAccumulator += 1;
+      } else {
+        m_quickStopAccumulator = 0.0;
+      }
+    }
+
+    double leftMotorOutput;
+    double rightMotorOutput;
+
+    leftMotorOutput = xSpeed + angularPower;
+    rightMotorOutput = xSpeed - angularPower;
+    // If rotation is overpowered, reduce both outputs to within acceptable range
+    if (overPower) {
+      if (leftMotorOutput > 1.0) {
+        rightMotorOutput -= leftMotorOutput - 1.0;
+        leftMotorOutput = 1.0;
+      } else if (rightMotorOutput > 1.0) {
+        leftMotorOutput -= rightMotorOutput - 1.0;
+        rightMotorOutput = 1.0;
+      } else if (leftMotorOutput < -1.0) {
+        rightMotorOutput -= leftMotorOutput + 1.0;
+        leftMotorOutput = -1.0;
+      } else if (rightMotorOutput < -1.0) {
+        leftMotorOutput -= rightMotorOutput + 1.0;
+        rightMotorOutput = -1.0;
+      }
+    }
+
+    // Normalize the wheel speeds
+    double maxMagnitude = Math.max(Math.abs(leftMotorOutput), Math.abs(rightMotorOutput));
+    if (maxMagnitude > 1.0) {
+      leftMotorOutput /= maxMagnitude;
+      rightMotorOutput /= maxMagnitude;
+    }
+
+    setPower(leftMotorOutput, rightMotorOutput);
   }
 
   @Override
