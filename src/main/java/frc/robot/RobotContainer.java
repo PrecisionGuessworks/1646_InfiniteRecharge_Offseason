@@ -10,6 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
+import frc.robot.subsystems.drivetrain.states.OpenLoopState;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -19,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
 
-
+  DrivetrainSubsystem drive;
 
 
   /**
@@ -27,6 +30,8 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
+    drive = DrivetrainSubsystem.getInstance();
+    CommandScheduler.getInstance().setDefaultCommand(drive, new OpenLoopState());
     configureButtonBindings();
   }
 
