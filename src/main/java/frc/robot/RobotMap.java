@@ -16,10 +16,20 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class RobotMap {
+    public static final int DRIVETRAIN_FR_MOTOR_ID = 01;
+    public static final int DRIVETRAIN_FL_MOTOR_ID = 02;
+    public static final int DRIVETRAIN_BR_MOTOR_ID = 03;
+    public static final int DRIVETRAIN_BL_MOTOR_ID = 04;
 
-    public static final int INTAKE_ROLLER_MOTOR_ID = 01;
 
-    public static final int HOPPER_FEEDER_WHEEL_MOTOR_ID = 11;
-    public static final int HOPPER_DEJAM_WHEEL_MOTOR_ID = 12;
+    public static final int INTAKE_ROLLER_MOTOR_ID = 11;
+
+    public static final int HOPPER_FEEDER_WHEEL_MOTOR_ID = 21;
+    public static final int HOPPER_DEJAM_WHEEL_MOTOR_ID = 22;
+
+    public static final int DRIVER_CONTROLLER_ID = 00;
+    public static final int OPERATOR_CONTROLLER_ID = 01;
+    public static final int throttle_axis = 01;
+    public static final int rotate_axis = 02;
   
 }

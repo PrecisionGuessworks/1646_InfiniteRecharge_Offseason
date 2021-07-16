@@ -8,42 +8,44 @@
 package frc.robot.subsystems.drivetrain.states;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
-
-public class PathFollowerState extends CommandBase {
+public class DriveForwardState extends CommandBase {
   
   DrivetrainSubsystem drive = DrivetrainSubsystem.getInstance();
-  Trajectory trajectory;
-  Timer path_timer;
+  double driveTime;
+  Timer pathTimer;
 
-  public PathFollowerState(Trajectory trajectory) {
-    path_timer = new Timer();
-    this.trajectory = trajectory;
+  public DriveForwardState(double driveTime) {
+    pathTimer = new Timer();
+    this.driveTime = driveTime;
     addRequirements(drive);
   }
 
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    path_timer.start();
+    pathTimer.reset();
+    pathTimer.start();
+    drive.arcadeDrive(Constants.DrivetrainConstants.autoDrivepower, 0.0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //drive.setSpeed(trajectory.getStates()., rightSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    drive.setPower(0.0, 0.0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return path_timer.hasElapsed(trajectory.getTotalTimeSeconds());
+    return pathTimer.hasElapsed(driveTime);
   }
 }
