@@ -92,8 +92,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
     double leftMotorOutput;
     double rightMotorOutput;
 
-    leftMotorOutput = xSpeed + angularPower;
-    rightMotorOutput = xSpeed - angularPower;
+    leftMotorOutput = xSpeed - angularPower;
+    rightMotorOutput = xSpeed + angularPower;
     // If rotation is overpowered, reduce both outputs to within acceptable range
     if (overPower) {
       if (leftMotorOutput > 1.0) {
