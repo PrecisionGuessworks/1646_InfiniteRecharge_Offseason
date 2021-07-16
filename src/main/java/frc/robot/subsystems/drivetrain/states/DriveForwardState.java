@@ -9,6 +9,7 @@ package frc.robot.subsystems.drivetrain.states;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
 public class DriveForwardState extends CommandBase {
@@ -26,7 +27,7 @@ public class DriveForwardState extends CommandBase {
   @Override
   public void initialize() {
     pathTimer.start();
-    drive.setPower(0.8, 0.8);
+    drive.setPower(Constants.DrivetrainConstants.autoDrivepower, Constants.DrivetrainConstants.autoDrivepower);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

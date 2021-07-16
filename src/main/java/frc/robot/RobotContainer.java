@@ -55,6 +55,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     
-    return new DriveForwardState(1.0);//second
+    return new DriveForwardState(Constants.DrivetrainConstants.autoDriveTime);//second
   }
 }
