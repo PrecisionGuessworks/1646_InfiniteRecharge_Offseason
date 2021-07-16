@@ -29,8 +29,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
   private double m_quickStopAccumulator;
 
   private DrivetrainSubsystem() {
-    motorFL = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FL_MOTOR_ID, DrivetrainConstants.LEFT_PID_P, DrivetrainConstants.LEFT_PID_I, DrivetrainConstants.LEFT_PID_D, DrivetrainConstants.LEFT_PID_F);
-    motorFR = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FR_MOTOR_ID, true, DrivetrainConstants.RIGHT_PID_P, DrivetrainConstants.RIGHT_PID_I, DrivetrainConstants.RIGHT_PID_D, DrivetrainConstants.RIGHT_PID_F);
+    motorFL = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FL_MOTOR_ID, true, DrivetrainConstants.LEFT_PID_P, DrivetrainConstants.LEFT_PID_I, DrivetrainConstants.LEFT_PID_D, DrivetrainConstants.LEFT_PID_F);
+    motorFR = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FR_MOTOR_ID, false, DrivetrainConstants.RIGHT_PID_P, DrivetrainConstants.RIGHT_PID_I, DrivetrainConstants.RIGHT_PID_D, DrivetrainConstants.RIGHT_PID_F);
     motorBL = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_BL_MOTOR_ID, motorFL);
     motorBR = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_BR_MOTOR_ID, motorFR);
   }

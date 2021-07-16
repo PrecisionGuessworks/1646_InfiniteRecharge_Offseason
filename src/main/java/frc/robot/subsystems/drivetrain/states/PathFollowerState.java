@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 
+
 public class PathFollowerState extends CommandBase {
   
   DrivetrainSubsystem drive = DrivetrainSubsystem.getInstance();
@@ -32,7 +33,7 @@ public class PathFollowerState extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+    //drive.setSpeed(trajectory.getStates()., rightSpeed);
   }
 
   // Called once the command ends or is interrupted.
