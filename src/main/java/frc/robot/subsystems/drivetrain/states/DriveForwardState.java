@@ -20,14 +20,16 @@ public class DriveForwardState extends CommandBase {
 
   public DriveForwardState(double driveTime) {
     pathTimer = new Timer();
+    this.driveTime = driveTime;
     addRequirements(drive);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    pathTimer.reset();
     pathTimer.start();
-    drive.setPower(Constants.DrivetrainConstants.autoDrivepower, Constants.DrivetrainConstants.autoDrivepower);
+    drive.arcadeDrive(Constants.DrivetrainConstants.autoDrivepower, 0.0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

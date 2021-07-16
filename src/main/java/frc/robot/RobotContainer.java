@@ -26,6 +26,7 @@ public class RobotContainer {
 
   DrivetrainSubsystem drive;
 
+  private final DriveForwardState autoCommand = new DriveForwardState(Constants.DrivetrainConstants.autoDriveTime);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -55,6 +56,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     
-    return new DriveForwardState(Constants.DrivetrainConstants.autoDriveTime);//second
+    return autoCommand;//second
   }
 }

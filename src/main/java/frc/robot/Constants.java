@@ -35,9 +35,9 @@ public final class Constants {
         //Change to adjust the speed of the drivetrain
         public static final double driveDampen = 1.0;
 
-        public static final double autoDriveTime = 2.0;
+        public static final double autoDriveTime = 1.0;
 
-        public static final double autoDrivepower = 0.8;
+        public static final double autoDrivepower = -0.4; //Needs to be negative to go forwards, will fix later
     }
     public final class IntakeConstants{
         public static final double rollerIntakePower = 0.8;
