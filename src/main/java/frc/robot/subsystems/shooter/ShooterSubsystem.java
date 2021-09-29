@@ -7,7 +7,10 @@
 
 package frc.robot.subsystems.shooter;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -21,6 +24,21 @@ public class ShooterSubsystem extends SubsystemBase {
   public ShooterSubsystem() {
     lowerShooterMotor = TalonFXFactory.createPIDTalonFX(RobotMap.SHOOTER_LOWER_MOTOR_ID, 1, 0, 0, 0);
     upperShooterMotor = TalonFXFactory.createPIDTalonFX(RobotMap.SHOOTER_LOWER_MOTOR_ID, true, 1, 0, 0, 0);
+  }
+
+  public void setPower(double power){
+    lowerShooterMotor.set(ControlMode.PercentOutput, power);
+    upperShooterMotor.set(ControlMode.PercentOutput, power);
+  }
+
+  public void setVelocity(double velocity){
+    lowerShooterMotor.set(ControlMode.Velocity, velocity);
+    upperShooterMotor.set(ControlMode.Velocity, velocity);
+  }
+
+  public void setVelocityWithArbitraryFeedForward(double velocity){
+    lowerShooterMotor.set(ControlMode.Velocity, velocity, DemandType.ArbitraryFeedForward, velocity/Constants.ShooterConstants.MAX_VELOCITY);
+    upperShooterMotor.set(ControlMode.Velocity, velocity, DemandType.ArbitraryFeedForward, velocity/Constants.ShooterConstants.MAX_VELOCITY);
   }
 
   @Override

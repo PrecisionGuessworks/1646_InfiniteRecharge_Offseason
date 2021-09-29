@@ -54,6 +54,8 @@ public final class Constants {
         public static final double UPPER_PID_I = 0.0;
         public static final double UPPER_PID_D = 0.0;
         public static final double UPPER_PID_F = 0.5;
+
+        public static final double MAX_VELOCITY = 100; //This is an arbitrary values that needs adjusted
     }
 
 }
