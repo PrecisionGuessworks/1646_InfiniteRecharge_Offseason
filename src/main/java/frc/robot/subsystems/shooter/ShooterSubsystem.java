@@ -7,14 +7,20 @@
 
 package frc.robot.subsystems.shooter;
 
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.RobotMap;
+import frc.robot.lib.TalonFXFactory;
 
 public class ShooterSubsystem extends SubsystemBase {
-  /**
-   * Creates a new ShooterSubsystem.
-   */
-  public ShooterSubsystem() {
+  
+  TalonFX lowerShooterMotor, upperShooterMotor;
 
+  public ShooterSubsystem() {
+    lowerShooterMotor = TalonFXFactory.createPIDTalonFX(RobotMap.SHOOTER_LOWER_MOTOR_ID, 1, 0, 0, 0);
+    upperShooterMotor = TalonFXFactory.createPIDTalonFX(RobotMap.SHOOTER_LOWER_MOTOR_ID, true, 1, 0, 0, 0);
   }
 
   @Override

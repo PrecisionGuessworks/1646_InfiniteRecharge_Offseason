@@ -44,4 +44,16 @@ public final class Constants {
         public static final double dejamPower = -0.4; //Must be opposite sign as feedInPower
     }
 
+    public final class ShooterConstants{
+        public static final double LOWER_PID_P = 0.1;
+        public static final double LOWER_PID_I = 0.0;
+        public static final double LOWER_PID_D = 0.0;
+        public static final double LOWER_PID_F = 0.5;
+
+        public static final double UPPER_PID_P = 0.1;
+        public static final double UPPER_PID_I = 0.0;
+        public static final double UPPER_PID_D = 0.0;
+        public static final double UPPER_PID_F = 0.5;
+    }
+
 }
