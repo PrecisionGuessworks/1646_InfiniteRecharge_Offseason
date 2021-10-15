@@ -55,6 +55,10 @@ public class TurretSubsystem extends SubsystemBase {
     turretMotor.set(ControlMode.PercentOutput, 0.0);
   }
 
+  public double getTurretPositionRadians(){
+    return (turretMotor.getSelectedSensorPosition() + 1238) / TurretConstants.SHOOTER_RADIANS_TO_CP100MS;
+  }
+
   public boolean isTargetSeenByLimeLight(){
     NetworkTableEntry tv = limelightTable.getEntry("tv");
     return (tv.getDouble(0) != 0);

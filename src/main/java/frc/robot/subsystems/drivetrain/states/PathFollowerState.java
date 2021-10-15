@@ -30,18 +30,22 @@ public class PathFollowerState extends CommandBase {
     path_timer.start();
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //drive.setSpeed(trajectory.getStates()., rightSpeed);
+    double current_time = path_timer.get();
+
+    double velocity = trajectory.sample(current_time).velocityMetersPerSecond;
+    double angularVelocity = velocity * trajectory.sample(current_time).curvatureRadPerMeter;
+
+    double accel = trajectory.sample(current_time).accelerationMetersPerSecondSq;
+    double angularAccel = accel * trajectory.sample(current_time).curvatureRadPerMeter;
+
+    double leftVelocity = velocity + angularVelocity;
+    double rightVelocity = velocity - angularVelocity;
+    
+    drive.setSpeed(leftVelocity, rightVelocity);
   }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
-
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return path_timer.hasElapsed(trajectory.getTotalTimeSeconds());

@@ -5,6 +5,7 @@
 package frc.robot.subsystems.turret.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.TurretConstants;
 import frc.robot.subsystems.turret.TurretSubsystem;
 
 public class PositionState extends CommandBase {
@@ -21,5 +22,10 @@ public class PositionState extends CommandBase {
   @Override
   public void initialize() {
     turret.setPosition(positionInRadians);
+  }
+
+  @Override
+  public boolean isFinished() {
+    return Math.abs(turret.getTurretPositionRadians() - positionInRadians) < TurretConstants.TOLERANCE_IN_RADIANS;
   }
 }
