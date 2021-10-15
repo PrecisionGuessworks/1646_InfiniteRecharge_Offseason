@@ -5,24 +5,20 @@
 package frc.robot.subsystems.shooter.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.ShooterConstants;
+import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 
 public class MediumShotState extends CommandBase {
 
+  ShooterSubsystem shooter = ShooterSubsystem.getInstance();
+
   public MediumShotState() {
+    addRequirements(shooter);
   }
 
   @Override
-  public void initialize() {}
-
-  @Override
-  public void execute() {}
-
-  @Override
-  public void end(boolean interrupted) {}
-
-  @Override
-  public boolean isFinished() {
-    return false;
+  public void initialize() {
+    shooter.setPower(ShooterConstants.MEDIUM_SHOT_POWER);
   }
 }

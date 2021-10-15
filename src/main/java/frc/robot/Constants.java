@@ -56,6 +56,10 @@ public final class Constants {
         public static final double UPPER_PID_F = 0.5;
 
         public static final double MAX_VELOCITY = 100; //This is an arbitrary values that needs adjusted
+
+        public static final double EJECT_POWER = 0.2;
+        public static final double MEDIUM_SHOT_POWER = 0.65;
+        public static final double LONG_SHOT_POWER = 0.9;
     }
 
 }
