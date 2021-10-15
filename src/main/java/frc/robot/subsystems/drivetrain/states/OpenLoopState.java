@@ -22,8 +22,8 @@ public class OpenLoopState extends CommandBase {
 
   @Override
   public void execute() {
-    double throttle = Controllers.getDriverController().getRawAxis(RobotMap.throttle_axis);
-    double rotate = Controllers.getDriverController().getRawAxis(RobotMap.rotate_axis);
+    double throttle = Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.LEFT_STICK_Y);
+    double rotate = Controllers.getDriverController().getRawAxis(Controllers.PS4_Controller.Axis.RIGHT_STICK_X);
     boolean isQuickTurn = false;
     if (Math.abs(throttle) < 0.1){
       isQuickTurn = true;

@@ -24,7 +24,7 @@ public class Controllers {
     public static class PS4_Controller{
         public static class Axis{
             public static final int LEFT_STICK_X = 0;
-            public static final int PS4_LEFT_STICK_Y = 1;
+            public static final int LEFT_STICK_Y = 1;
             public static final int RIGHT_STICK_X = 2;
             public static final int LEFT_TRIGGER = 3;
             public static final int RIGHT_TRIGGER = 4;
