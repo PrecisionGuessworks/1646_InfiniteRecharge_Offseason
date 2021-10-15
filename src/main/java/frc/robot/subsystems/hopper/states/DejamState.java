@@ -21,7 +21,7 @@ public class DejamState extends CommandBase {
 
   @Override
   public void initialize() {
-    hopper.setFeederWheelPowerTo(0.0);
+    hopper.setFeederWheelPowerTo(HopperConstants.elevatorDejamPower);
     hopper.setDejamWheelPowerTo(HopperConstants.dejamPower);
   }
 

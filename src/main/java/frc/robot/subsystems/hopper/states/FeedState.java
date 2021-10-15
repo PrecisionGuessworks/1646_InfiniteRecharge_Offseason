@@ -22,6 +22,7 @@ public class FeedState extends CommandBase {
   @Override
   public void initialize() {
     hopper.setFeederWheelPowerTo(HopperConstants.feedInPower);
+    hopper.setDejamWheelPowerTo(HopperConstants.feedInPower);
   }
 
 }
