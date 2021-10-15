@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.hopper.states.FeedState;
 import frc.robot.subsystems.intake.states.CollectState;
 import frc.robot.subsystems.shooter.states.MediumShotState;
@@ -16,7 +17,10 @@ public class ShootBalls extends ParallelCommandGroup {
   public ShootBalls() {
     addCommands(
       new MediumShotState(),
-      new FeedState()
+      sequence(
+        new WaitCommand(1.0),
+        new FeedState()
+      )
     );
   }
 }
