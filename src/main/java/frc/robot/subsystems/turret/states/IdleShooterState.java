@@ -7,11 +7,11 @@ package frc.robot.subsystems.turret.states;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.turret.TurretSubsystem;
 
-public class Idle extends CommandBase {
+public class IdleShooterState extends CommandBase {
   
   TurretSubsystem turret = TurretSubsystem.getInstance();
 
-  public Idle() {
+  public IdleShooterState() {
     addRequirements(turret);
   }
 
