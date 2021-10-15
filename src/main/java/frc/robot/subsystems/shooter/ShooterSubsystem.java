@@ -19,11 +19,19 @@ import frc.robot.lib.TalonFXFactory;
 
 public class ShooterSubsystem extends SubsystemBase {
   
-  TalonFX lowerShooterMotor, upperShooterMotor;
+  private TalonFX lowerShooterMotor, upperShooterMotor;
+  private static ShooterSubsystem instance;
 
-  public ShooterSubsystem() {
+  private ShooterSubsystem() {
     lowerShooterMotor = TalonFXFactory.createPIDTalonFX(RobotMap.SHOOTER_LOWER_MOTOR_ID, 1, 0, 0, 0);
     upperShooterMotor = TalonFXFactory.createPIDTalonFX(RobotMap.SHOOTER_LOWER_MOTOR_ID, true, 1, 0, 0, 0);
+  }
+
+  public static ShooterSubsystem getInstance(){
+    if (instance == null){
+      instance = new ShooterSubsystem();
+    }
+    return instance;
   }
 
   public void setPower(double power){
