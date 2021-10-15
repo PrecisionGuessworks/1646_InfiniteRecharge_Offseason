@@ -36,6 +36,10 @@ public final class Constants {
     }
     public final class IntakeConstants{
         public static final double rollerIntakePower = 0.8;
+        public static final double armPower = 0.5;
+
+        public static final double lowerArmBound = 0.0;
+        public static final double upperArmBound = 1.0;
     }
 
 
