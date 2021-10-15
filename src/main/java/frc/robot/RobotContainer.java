@@ -14,6 +14,14 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.drivetrain.DrivetrainSubsystem;
 import frc.robot.subsystems.drivetrain.states.DriveForwardState;
 import frc.robot.subsystems.drivetrain.states.OpenLoopState;
+import frc.robot.subsystems.hopper.HopperSubsystem;
+import frc.robot.subsystems.hopper.states.IdleHopperState;
+import frc.robot.subsystems.intake.IntakeSubsystem;
+import frc.robot.subsystems.intake.states.StowState;
+import frc.robot.subsystems.shooter.ShooterSubsystem;
+import frc.robot.subsystems.shooter.states.IdleShooterState;
+import frc.robot.subsystems.turret.TurretSubsystem;
+import frc.robot.subsystems.turret.states.IdleTurretState;
 
 
 /**
@@ -25,6 +33,10 @@ import frc.robot.subsystems.drivetrain.states.OpenLoopState;
 public class RobotContainer {
 
   DrivetrainSubsystem drive;
+  ShooterSubsystem shooter;
+  IntakeSubsystem intake;
+  HopperSubsystem hopper;
+  TurretSubsystem turret;
 
   private final DriveForwardState autoCommand = new DriveForwardState(Constants.DrivetrainConstants.autoDriveTime);
 
@@ -33,9 +45,27 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
-    drive = DrivetrainSubsystem.getInstance();
-    CommandScheduler.getInstance().setDefaultCommand(drive, new OpenLoopState());
+    initalizeSubsystems();
+
+    
+
     configureButtonBindings();
+  }
+
+  private void initalizeSubsystems(){
+    drive = DrivetrainSubsystem.getInstance();
+    shooter = ShooterSubsystem.getInstance();
+    intake = IntakeSubsystem.getInstance();
+    hopper = HopperSubsystem.getInstance();
+    turret = TurretSubsystem.getInstance();
+  }
+
+  private void setAllDefaultCommands(){
+    CommandScheduler.getInstance().setDefaultCommand(drive, new OpenLoopState());
+    CommandScheduler.getInstance().setDefaultCommand(shooter, new IdleShooterState());
+    CommandScheduler.getInstance().setDefaultCommand(intake, new StowState());
+    CommandScheduler.getInstance().setDefaultCommand(hopper, new IdleHopperState());
+    CommandScheduler.getInstance().setDefaultCommand(turret, new IdleTurretState());
   }
 
   /**
@@ -45,6 +75,7 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    new 
   }
 
 
