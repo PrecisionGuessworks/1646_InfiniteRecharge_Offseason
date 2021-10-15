@@ -19,7 +19,7 @@ import frc.robot.Constants.DrivetrainConstants;
 public class DrivetrainSubsystem extends SubsystemBase {
   
   private static DrivetrainSubsystem instance;
-  private TalonFX motorFL, motorFR, motorBL, motorBR;
+  private TalonFX motorFL, motorFR, motorBL, motorBR, motorTL, motorTR;
 
   public static final double kDefaultQuickStopThreshold = 0.2;
   public static final double kDefaultQuickStopAlpha = 0.1;
@@ -33,6 +33,8 @@ public class DrivetrainSubsystem extends SubsystemBase {
     motorFR = TalonFXFactory.createPIDTalonFX(RobotMap.DRIVETRAIN_FR_MOTOR_ID, false, DrivetrainConstants.RIGHT_PID_P, DrivetrainConstants.RIGHT_PID_I, DrivetrainConstants.RIGHT_PID_D, DrivetrainConstants.RIGHT_PID_F);
     motorBL = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_BL_MOTOR_ID, motorFL);
     motorBR = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_BR_MOTOR_ID, motorFR);
+    motorTL = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_TL_MOTOR_ID, motorFL);
+    motorTR = TalonFXFactory.createFollowerTalonFX(RobotMap.DRIVETRAIN_TR_MOTOR_ID, motorFR);
   }
 
   public static DrivetrainSubsystem getInstance(){
