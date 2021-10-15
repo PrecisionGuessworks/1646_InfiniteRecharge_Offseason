@@ -7,20 +7,22 @@
 
 package frc.robot.subsystems.intake;
 
-import edu.wpi.first.wpilibj.VictorSP;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
   
   private static IntakeSubsystem instance;
-  private VictorSP rollerMotor; 
+  private VictorSPX rollerMotor; 
   
   /**
    * Creates a new IntakeSubsystem.
    */
   private IntakeSubsystem() {
-    rollerMotor = new VictorSP(RobotMap.INTAKE_ROLLER_MOTOR_ID);
+    rollerMotor = new VictorSPX(RobotMap.INTAKE_ROLLER_MOTOR_ID);
   }
 
   public static IntakeSubsystem getInstance() {
@@ -31,7 +33,7 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public void setRollerPower(double power){
-    rollerMotor.set(power);
+    rollerMotor.set(ControlMode.PercentOutput, power);
   }
   //TODO: Finish the extend and retract functions (based on how it's done)
   public void extend(){

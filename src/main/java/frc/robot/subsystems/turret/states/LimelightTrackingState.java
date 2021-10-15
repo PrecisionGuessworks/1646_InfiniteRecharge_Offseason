@@ -6,9 +6,7 @@ package frc.robot.subsystems.turret.states;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Controllers;
-import frc.robot.Constants.TurretConstants;
 import frc.robot.subsystems.turret.TurretSubsystem;
-import frc.robot.subsystems.turret.turretSubsystem;
 
 public class LimelightTrackingState extends CommandBase {
   
