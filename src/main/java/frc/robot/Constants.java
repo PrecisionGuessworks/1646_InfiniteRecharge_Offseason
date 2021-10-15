@@ -7,11 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.geometry.Pose2d;
-import edu.wpi.first.wpilibj.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.trajectory.Trajectory;
-import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -47,6 +42,24 @@ public final class Constants {
     public final class HopperConstants{
         public static final double feedInPower = 0.8;
         public static final double dejamPower = -0.4; //Must be opposite sign as feedInPower
+    }
+
+    public final class ShooterConstants{
+        public static final double LOWER_PID_P = 0.1;
+        public static final double LOWER_PID_I = 0.0;
+        public static final double LOWER_PID_D = 0.0;
+        public static final double LOWER_PID_F = 0.5;
+
+        public static final double UPPER_PID_P = 0.1;
+        public static final double UPPER_PID_I = 0.0;
+        public static final double UPPER_PID_D = 0.0;
+        public static final double UPPER_PID_F = 0.5;
+
+        public static final double MAX_VELOCITY = 100; //This is an arbitrary values that needs adjusted
+
+        public static final double EJECT_POWER = 0.2;
+        public static final double MEDIUM_SHOT_POWER = 0.65;
+        public static final double LONG_SHOT_POWER = 0.9;
     }
 
 }
