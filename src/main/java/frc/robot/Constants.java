@@ -62,4 +62,12 @@ public final class Constants {
         public static final double LONG_SHOT_POWER = 0.9;
     }
 
+    public final class TurretConstants{
+        public static final double LOWER_POSITION_BOUND = -9842.0;
+        public static final double UPPER_POSITION_BOUND = 12319.0;
+
+        public static final double SHOOTER_RADIANS_TO_CP100MS = (22161/Math.PI);
+        public static final double LIMELIGHTX_TO_RADIANS = (Math.PI / 180);
+    }
+
 }

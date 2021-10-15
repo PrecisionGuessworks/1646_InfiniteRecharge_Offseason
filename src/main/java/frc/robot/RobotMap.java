@@ -30,6 +30,8 @@ public final class RobotMap {
     public static final int SHOOTER_UPPER_MOTOR_ID = 31;
     public static final int SHOOTER_LOWER_MOTOR_ID = 32;
 
+    public static final int TURRERT_MOTOR_ID = 40;
+
     public static final int DRIVER_CONTROLLER_ID = 00;
     public static final int OPERATOR_CONTROLLER_ID = 01;
     public static final int throttle_axis = 01;
