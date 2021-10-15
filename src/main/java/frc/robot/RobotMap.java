@@ -20,6 +20,8 @@ public final class RobotMap {
     public static final int DRIVETRAIN_FL_MOTOR_ID = 02;
     public static final int DRIVETRAIN_BR_MOTOR_ID = 03;
     public static final int DRIVETRAIN_BL_MOTOR_ID = 04;
+    public static final int DRIVETRAIN_TR_MOTOR_ID = 05;
+    public static final int DRIVETRAIN_TL_MOTOR_ID = 06;
 
 
     public static final int INTAKE_ROLLER_MOTOR_ID = 11;
