@@ -68,6 +68,9 @@ public final class Constants {
 
         public static final double SHOOTER_RADIANS_TO_CP100MS = (22161/Math.PI);
         public static final double LIMELIGHTX_TO_RADIANS = (Math.PI / 180);
+
+        public static final double EJECT_ANGLE_IN_RADIANS = 0.4869; //Math.atan2(9, 17);
+        public static final double TOLERANCE_IN_RADIANS = 0.1745; // 5 degrees
     }
 
 }
