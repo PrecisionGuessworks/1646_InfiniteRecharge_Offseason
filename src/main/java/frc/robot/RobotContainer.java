@@ -24,6 +24,7 @@ import frc.robot.subsystems.hopper.HopperSubsystem;
 import frc.robot.subsystems.hopper.states.IdleHopperState;
 import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.intake.states.CollectState;
+import frc.robot.subsystems.intake.states.Manual;
 import frc.robot.subsystems.intake.states.StowState;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.shooter.states.IdleShooterState;
@@ -94,7 +95,7 @@ public class RobotContainer {
     new JoystickButton(drive_joystick, Button.X).whileHeld(new CollectState());
     new JoystickButton(drive_joystick, Button.L1).whileHeld(new ShootBalls());
     new JoystickButton(drive_joystick, Button.R1).whileHeld(new PrecisionShot());
-    new JoystickButton(drive_joystick, Button.CIRCLE).whenHeld(new PositionState(0));
+    new JoystickButton(drive_joystick, Button.CIRCLE).whileHeld(new PositionState(0));
   }
 
   private void configureOperatorButtonBindings() {
@@ -104,7 +105,8 @@ public class RobotContainer {
     new JoystickButton(op_joystick, Button.X).whileHeld(new CollectState());
     new JoystickButton(op_joystick, Button.L1).whileHeld(new ShootBalls());
     new JoystickButton(op_joystick, Button.R1).whileHeld(new PrecisionShot());
-    new JoystickButton(op_joystick, Button.CIRCLE).whenHeld(new PositionState(0));
+    new JoystickButton(op_joystick, Button.CIRCLE).whileHeld(new PositionState(0));
+    new JoystickButton(op_joystick, Button.SQUARE).whileHeld(new Manual());
   }
 
   public Command getAutonomousCommand() {
