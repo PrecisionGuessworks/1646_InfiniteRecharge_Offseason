@@ -48,6 +48,13 @@ public class TurretSubsystem extends SubsystemBase {
     turretMotor.set(ControlMode.Position, positionInEncoderUnits);
   }
 
+  public void setPowerToZero(){
+    // This method is was create for the intend to stop the turret motion
+    // I wouldn't modify this to do any power, because it could cause safety issues
+    // (for both robots and humans)
+    turretMotor.set(ControlMode.PercentOutput, 0.0);
+  }
+
   public boolean isTargetSeenByLimeLight(){
     NetworkTableEntry tv = limelightTable.getEntry("tv");
     return (tv.getDouble(0) != 0);
