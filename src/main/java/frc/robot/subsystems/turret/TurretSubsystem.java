@@ -13,6 +13,7 @@ import frc.robot.Constants.TurretConstants;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class TurretSubsystem extends SubsystemBase {
 
@@ -78,6 +79,7 @@ public class TurretSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    SmartDashboard.putBoolean("Limelight has target", isTargetSeenByLimeLight());
+    SmartDashboard.putNumber("Limelight X", getLimeLightTargetXPos());
   }
 }
